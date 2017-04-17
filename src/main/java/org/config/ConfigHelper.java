@@ -5,7 +5,7 @@ import java.util.Properties;
 /**
  * Created by Smith on 2017/4/16.
  */
-public class ConfigHelper {
+public final class ConfigHelper {
     private static final Properties CONFIG_PROPS = PropsUtil.loadProps(ConfigConstant.CONFIG_FILE);
 
     public static String getAppBasePackage() {

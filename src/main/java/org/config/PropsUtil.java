@@ -10,7 +10,7 @@ import java.util.Properties;
 /**
  * Created by Smith on 2017/4/16.
  */
-public class PropsUtil {
+final class PropsUtil {
     private static final Logger LOGGER = LogManager.getLogger();
 
     static Properties loadProps(String file) {

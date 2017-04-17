@@ -13,7 +13,7 @@ import java.util.Set;
 /**
  * Created by Smith on 2017/4/16.
  */
-public class ClassUtil {
+public final class ClassUtil {
     private static final Logger LOGGER = LogManager.getLogger();
     private static Set<Class<?>> classSet = new HashSet<>();
 

@@ -3,7 +3,7 @@ package org.config;
 /**
  * Created by Smith on 2017/4/16.
  */
-public interface ConfigConstant {
+interface ConfigConstant {
     String CONFIG_FILE = "smart.properties";
 
     String APP_BASE_PACKAGE = "smart.app.base_package";
