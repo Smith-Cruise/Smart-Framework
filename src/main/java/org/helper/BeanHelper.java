@@ -31,6 +31,18 @@ public final class BeanHelper {
         return BEAN_MAP;
     }
 
+
+    public static void addBean(Class<?> cls, Object obj) {
+        BEAN_MAP.put(cls, obj);
+    }
+
+    /*
+    * 如果KEY值重复，则会覆盖数据
+    * */
+    public static void updateBean(Class<?> cls, Object obj) {
+        BEAN_MAP.put(cls, obj);
+    }
+
     @SuppressWarnings("unchecked")
     public static <T> T getBean(Class<T> cls) {
         if (!BEAN_MAP.containsKey(cls)) {

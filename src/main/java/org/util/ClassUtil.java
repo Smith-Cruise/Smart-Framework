@@ -17,10 +17,6 @@ public final class ClassUtil {
     private static final Logger LOGGER = LogManager.getLogger();
     private static Set<Class<?>> classSet = new HashSet<>();
 
-    public static ClassLoader getClassLoader() {
-        return Thread.currentThread().getContextClassLoader();
-    }
-
     public static Class<?> loadClass(String className, boolean isInitialized) {
         Class<?> cls;
         try {
@@ -60,4 +56,9 @@ public final class ClassUtil {
         String packageName = packagePath.replace("\\", ".").replace(".class", "");
         classSet.add(loadClass(packageName, false));
     }
+
+    private static ClassLoader getClassLoader() {
+        return Thread.currentThread().getContextClassLoader();
+    }
+
 }
