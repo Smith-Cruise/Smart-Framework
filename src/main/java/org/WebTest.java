@@ -4,8 +4,11 @@ import org.annotation.Action;
 import org.annotation.Controller;
 import org.bean.Data;
 import org.bean.Param;
+import org.bean.Servlet;
 import org.bean.View;
+import org.helper.ServletHelper;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 /**
@@ -21,7 +24,10 @@ public class WebTest {
     }
 
     @Action(path = "get:/hello_jsp")
-    public View echoJsp(Param param) {
+    public View echoJsp() {
+        Servlet servlet = ServletHelper.get();
+        HttpServletRequest request = servlet.getRequest();
+        System.out.println(request.getProtocol());
         return new View("/hello.jsp");
     }
 

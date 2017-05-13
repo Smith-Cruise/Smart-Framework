@@ -7,6 +7,7 @@ import org.bean.View;
 import org.config.ConfigHelper;
 import org.helper.BeanHelper;
 import org.helper.ControllerHelper;
+import org.helper.ServletHelper;
 import org.util.JsonUtil;
 import org.util.ReflectionUtil;
 
@@ -43,6 +44,8 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        ServletHelper.init(req, resp);
+
         String requestMethod = req.getMethod().toLowerCase();
         String requestPath = req.getPathInfo();
 
@@ -61,9 +64,15 @@ public class DispatcherServlet extends HttpServlet {
             }
 
             Param param = new Param(paramMap);
+            System.out.println(paramMap.isEmpty());
             // 调用Action方法
             Method actionMethod = handler.getActionMethod();
-            Object result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
+            Object result = null;
+            if (paramMap.isEmpty()) {
+                result = ReflectionUtil.invokeMethod(controllerBean, actionMethod);
+            } else {
+                result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
+            }
             /*
             * 返回数据
             * */
